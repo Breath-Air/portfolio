@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: sans-serif;
+    }
+
+    :root {
+        --bg-color: #000;
+        --second-bg-color: #fff;
+        --text-bg-color: #fff;
+        --second-text-bg-color: #000;
+        --main-bg-color: #fe6509;
+    }
+
+    html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-bg-color);
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #000;
+        z-index: 99;
+        transition: .3s;
+    }
+
+    .color {
+        background-color: var(--main-bg-color);
+    }
+
+    .logo {
+        position: relative;
+        font-size: 2.9rem;
+        color: var(--text-bg-color);
+        font-weight: 600;
+        animation: logoSlide 0.3s linear;
+        animation-delay: 0s;
+    }
+
+    .navbar a {
+        position: relative;
+        font-size: 1.3rem;
+        color: var(--text-bg-color);
+        font-weight: 500;
+        margin-left: 3.5rem;
+        transition: .3s;
+    }
+
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: var(--main-bg-color);
+    }
+
+    #menu-icon {
+        font-size: 3.6rem;
+        color: var(--text-bg-color);
+        cursor: pointer;
+        display: none;
+    }
+
+    section {
+        min-height: 100vh;
+        padding: 10rem 9% 2rem;
+    }
+
+    .home {
+        display: grid;
+        align-items: center;
+    }
+
+
+    .home-para {
+        position: relative;
+        font-size: 7rem;
+        transition: .5s;
+    }
+
+    .btn-box {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 34.5rem;
+        height: 5rem;
+    }
+
+    .btn-box .btn {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15rem;
+        height: 100%;
+        background-color: var(--main-bg-color);
+        border: .2rem solid var(--main-bg-color);
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        color: var(--bg-color);
+        z-index: 1;
+        overflow: hidden;
+        transition: .3s;
+        animation: btnSlide 1s linear;
+    }
+
+    .btn-box .btn:hover {
+        color: var(--main-bg-color);
+    }
+
+
+    .btn-box .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--bg-color);
+        z-index: -1;
+        transition: .5s;
+    }
+
+    .btn-box .btn:hover:before {
+        width: 100%;
+    }
+
+
+
+
+    .about {
+        gap: 2rem;
+        background-color: var(--second-bg-color);
+        color: var(--second-text-bg-color);
+        padding: 6rem;
+        position: relative;
+    }
+
+    .about-img {
+        width: 80rem;
+        height: 40rem;
+    }
+
+    .lobot{
+        font-size: 5rem;
+        position: relative;
+        color: aqua;
+        opacity: 1;
+        margin: -35rem 15rem;
+    }
+    
+    .lobot:hover{
+        opacity: 1;
+        backdrop-filter: blur(50px);
+    }
+
+    .about-img img {
+        position: relative;
+        width: 90%;
+        margin: 6rem 0;
+        /* animation: aboutimgSlide 1s linear; */
+    }
+
+    .about-contant {
+        display: flex;
+    }
+
+    .about-contant h3 {
+        font-size: 8vh;
+        margin: 10rem 2rem;
+        position: relative;
+        left: 10px;
+        /* animation: aboutSlide 1s linear; */
+    }
+
+    .about-para {
+        font-size: 1.5rem;
+        margin: 0rem 29rem;
+        position: relative;
+        left: -260px;
+        bottom: 90px;
+        /* animation: aboutparaSlide 1s linear; */
+    }
+
+    .btns {
+        margin: 0 3rem;
+    }
+
+    .image {
+        background-color: var(--second-bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .background-image {
+        background-size: cover;
+    }
+
+    .design {
+        background-color: var(--second-bg-color);
+        color: var(--second-text-bg-color);
+    }
+
+    .professional {
+        display: flex;
+        justify-content: space-between;
+        margin: 5rem 0;
+    }
+
+    h3 {
+        font-size: 4rem;
+        margin: 0 20vh;
+        position: relative;
+        left: -18rem;
+        /* animation: h3Slide 1s linear; */
+    }
+
+
+
+    .contact-box h3 {
+        font-size: 4rem;
+        margin: 0 20vh;
+        position: relative;
+        left: -6rem;
+        animation: conh3 1s linear;
+    }
+
+
+    .anker-tag {
+        position: relative;
+        display: grid;
+        gap: 5rem;
+        font-size: 4rem;
+        text-decoration: underline;
+        margin: -5px 8rem;
+        animation: aSlide 1s linear;
+    }
+
+
+
+    .line {
+        width: 10vw;
+        height: 0px;
+        border: 1px solid var(--main-bg-color);
+        display: block;
+        margin: 3rem 0;
+    }
+
+    .design-para {
+        font-size: 1.5rem;
+        margin: 0rem 29rem;
+        position: relative;
+        left: -335px;
+        bottom: 115px;
+        animation: paraSlide 1s linear;
+    }
+
+
+
+    .img-grid {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .awards {
+        background-color: var(--second-bg-color);
+    }
+
+    .award-para {
+        color: var(--second-text-bg-color);
+    }
+
+    .collection {
+        color: var(--second-text-bg-color);
+        margin-top: 8rem;
+        position: relative;
+        animation: collection 1s linear;
+        transition: 1s;
+    }
+
+
+
+    .div1 {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem auto;
+    }
+
+    h4 {
+        font-size: 3rem;
+    }
+
+    .lines {
+        width: 82vw;
+        height: 0px;
+        border: 1px solid var(--bg-color);
+        display: block;
+    }
+
+    .tag {
+        font-size: 13px;
+    }
+
+    .costumer {
+        margin: 5rem 15rem;
+        left: 2rem;
+        animation: costumer 1s linear;
+    }
+
+    .svg {
+        width: 13vh;
+        display: block;
+        height: 21vh;
+        background: var(--main-bg-color);
+        margin: -10rem -5rem;
+        font-size: 15rem;
+        display: flex;
+        justify-content: center;
+        padding: 55px 0;
+        animation: svg 1s linear;
+    }
+
+    .writer {
+        font-size: 2rem;
+        display: flex;
+        justify-content: end;
+        animation: svg 1s linear;
+    }
+
+    .writer2 {
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: end;
+        animation: svg 1s linear;
+    }
+
+    .image1 {
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact {
+        display: flex;
+    }
+
+    .contact-box {
+        background-color: var(--second-bg-color);
+        color: var(--second-text-bg-color);
+    }
+
+    input {
+        border: 2px solid black;
+        width: 45rem;
+        height: 4rem;
+        padding: 2rem;
+    }
+
+    .input {
+        position: relative;
+        display: grid;
+        gap: 3rem;
+        animation: input 1s linear;
+    }
+
+
+    textarea {
+        border: 2px solid black;
+        padding: 2rem;
+        height: 15vh;
+    }
+
+    .star {
+        color: #fe6509;
+        font-size: 4rem;
+    }
+
+    .email {
+        font-size: 2rem;
+        margin: 0 7rem;
+        position: relative;
+        animation: conh3 1s linear;
+    }
+
+    .line2 {
+        width: 100vw;
+        height: 0px;
+        border: 1px solid var(--bg-color);
+        display: block;
+    }
+
+    footer {
+        background-color: var(--second-bg-color);
+        color: black;
+        font-size: 1.3rem;
+        height: 10vh;
+        padding: 4rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .links {
+        margin: 0 1.6rem;
+        font-size: 2rem;
+    }
+
+    .fa-solid {
+        font-size: 8rem;
+    }
+
+    .back {
+        width: 100vw;
+        margin: -5rem 0;
+        height: 100vh;
+    }
+
+    .ba {
+        position: relative;
+        animation: imgscroll 1s linear;
+    }
+
+
+    .imgg {
+        cursor: pointer;
+        transition: 0.5s;
+        width: 25vw;
+        animation: imgg 1s linear;
+    }
+
+    .imgg:hover {
+        width: 27vw;
+    }
+
+    @media screen and (max-width :500px) {
+        .navbar {
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            width: 100%;
+            padding: 1rem 4%;
+            background-color: var(--bg-color);
+            transition: .25s ease;
+            transition-delay: .25s;
+        }
+
+        .back {
+            width: 100vw;
+            margin: -5rem 0;
+            height: 50vh;
+        }
+
+        .navbar.active {
+            left: 0;
+            transition-delay: 0s;
+        }
+
+        .navbar a {
+            display: grid;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 4rem 0;
+        }
+
+        #menu-icon {
+            display: block;
+        }
+
+        .home-para {
+            font-size: 4rem;
+        }
+
+        section {
+            min-height: 80vh;
+            padding: 10rem 9% 2rem;
+        }
+
+        .about-contant {
+            display: grid;
+        }
+
+        .about-contant h3 {
+            font-size: 3rem;
+            margin: -5rem 15rem;
+            position: relative;
+            top: 39rem;
+            left: -17rem;
+        }
+
+        .about-img img {
+            width: 28%;
+            margin: 0rem 4rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-para {
+            margin: 0rem -2rem;
+            position: relative;
+            left: 0;
+            top: 8rem;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: center;
+            margin: 0 -3rem;
+            position: relative;
+            top: 10rem;
+        }
+
+        h3 {
+            font-size: 3rem;
+            margin: -12rem 18rem;
+        }
+
+        .anker-tag {
+            margin: -10rem -10rem;
+            font-size: 2rem;
+            position: relative;
+            right: 23rem;
+            bottom: 4.5rem;
+        }
+
+        .design-para {
+            margin: 5rem 0rem;
+            position: relative;
+            top: 1rem;
+            left: 0rem;
+        }
+
+        .award-para {
+            margin: -2rem 0rem;
+            position: relative;
+            left: 1rem;
+        }
+
+        h4 {
+            font-size: 2rem;
+        }
+
+        .svg {
+            position: relative;
+            left: 1rem;
+        }
+
+        .costumer {
+            margin: 4rem -4rem;
+            position: relative;
+            top: 9rem;
+            left: 2rem;
+        }
+
+        .writer {
+            position: relative;
+            top: 9rem;
+        }
+
+        .writer2 {
+            position: relative;
+            top: 9rem;
+
+        }
+
+        .contact-box {
+            margin: 0 0;
+            display: grid;
+        }
+
+        .contact-box h3 {
+            margin: -5rem -10rem;
+            left: 8rem;
+        }
+
+        .email {
+            position: relative;
+            left: 1rem;
+        }
+
+        .input {
+            margin: 10rem 0;
+            position: relative;
+            left: -33rem;
+            top: 7rem;
+        }
+
+        input {
+            width: 40rem;
+        }
+
+        .footer {
+            margin: -2rem -12rem;
+            position: relative;
+            left: 8rem;
+            top: 2rem;
+        }
+
+        .links {
+            margin: 0 0.7rem;
+            position: relative;
+            right: 12rem;
+            bottom: 3rem;
+        }
+    }
+</style>
+
+<body>
+    <!-- navigation bar -->
+    <header class="header">
+        <a href="#" class="logo" data-aos="fade-up">Name</a>
+
+        <div class="bx bx-menu" id="menu-icon"><ion-icon name="menu-outline"></ion-icon></div>
+
+        <nav class="navbar" data-aos="fade-up">
+            <a href="#home">HOME</a>
+            <a href="about.html">ABOUT ME</a>
+            <a href="portfolio.html">PORTFOLIO</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- home section -->
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <p class="home-para" data-aos="fade-rightf">I help businesses take better desgine decisisons for their creative products</p>
+            <div class="btn-box" data-aos="fade-up">
+                <a href="portfolio.html" class="btn" style="top: 6rem;">PORTFOLIO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- about section -->
+
+
+    <section class="about" id="about">
+        <div class="about-contant" data-aos="fade-right">
+            <h3 class="abut">I'm isaac Healer, a graphic desginer with extensive experience</h3>
+            <div class="about-img">
+                <img class="images" data-aos="fade-left" src="img/peakpx(1).jpg" alt="" >
+            </div>
+        </div>
+        <div>
+            <p class="about-para" data-aos="fade-right">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, veniam placeat!
+                Facilis ducimus,
+                nostrum neque tempore quam ad. Facilis libero porro nesciunt fugit! Illum voluptatem debitis id veniam
+                nobis quo praesentium architecto assumenda vitae corrupti. Minima ex, blanditiis laudantium commodi hic
+                voluptas ea modi cum culpa magnam? Voluptatum, deleniti quaerat!</p>
+        </div>
+        <div class="btn-box btns" data-aos="fade-up">
+            <a href="#contact" class="btn btns">CONTACT ME</a>
+        </div>
+    </section>
+    <!-- image -->
+    <section class="image" id="potfolio">
+        <div class="background-image">
+            <img src="img/crop image.jpg" alt="" class="back">
+        </div>
+    </section>
+
+    <!-- designs -->
+
+    <section class="design" id="design" style="min-height: auto;">
+        <div class="professional">
+            <h3  data-aos="fade-right">My professional design services
+                <div><span class="line"></span></div>
+            </h3>
+            <div class="anker-tag"  data-aos="fade-left">
+                <a href="#" style="color:#000;">ILLUSRATIONS</a>
+                <a href="#" style="color:#000;">WEB DESIGN</a>
+                <a href="#" style="color:#000;">BRANDING</a>
+            </div>
+        </div>
+        <p class="design-para" data-aos="fade-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam molestiae ut
+            incidunt quod odio aliquid, dolorum asperiores dignissimos dolores, placeat ipsa nesciunt. Facere iste
+            corrupti repudiandae ipsam est, ab voluptatum cupiditate voluptatem assumenda quo omnis qui in labore dolor
+            itaque, ad non veniam libero iure vel tenetur odit deserunt?</p>
+        <div class="img-grid"  data-aos="fade-up">
+            <div><img src="img/img.1.jpg" alt="" class="imgg"></div>
+            <div><img src="img/img.2.jpg" alt="" class="imgg"></div>
+            <div><img src="img/img.3.jpg" alt="" class="imgg"></div>
+        </div>
+    </section>
+
+    <section class="awards" id="awards">
+        <div>
+            <h3 class="award-para"  data-aos="fade-right">Awards & Recognition</h3>
+        </div>
+        <div class="collection"  data-aos="fade-up">
+            <div class="div1"><span class="tag">INFINITY AWARDS</span>
+                <h4>Best illusration 2020</h4> <span class="tag">2020</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">WEBY AWARDS</span>
+                <h4>Best App interface</h4> <span class="tag">2019</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">GRAFIKKA AWARDS</span>
+                <h4>Best Most unique</h4> <span class="tag">2017</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">ARTMONDO</span>
+                <h4>Best Artist of the year</h4> <span class="tag">2016</span>
+            </div>
+            <div><span class="lines"></span></div>
+        </div>
+    </section>
+
+
+    <section class="qouts" style="min-height: auto;">
+        <div><span class="svg" data-aos="fade-up"><i class="fa-solid fa-quote-left"></i></span></div>
+        <h3 class="costumer"  data-aos="fade-down">Issac is a great designer. He did the branding for our beauty prodects line which turned
+            out great. He is so talented and creative</h3>
+        <span>
+            <div class="writer" data-aos="fade-down">stephany clark</div><br>
+            <div class="writer2" data-aos="fade-up">Founder of Belle</div>
+        </span>
+    </section>
+
+    <section class="image1" id="potfolio" style="min-height: auto;">
+        <div class="background-image">
+            <img src="img/img.4.jpg" alt="" style="width: 100vw; position: relative; top: 25px;">
+        </div>
+    </section>
+
+    <!-- contact -->
+
+    <section class="contact-box" id="contact" style="min-height: 80vh;">
+        <div class="contact">
+            <div class="contact-para">
+                <h3 data-aos="fade-right">
+                    interested in working together?
+                    let's talk
+                </h3><br>
+                <br><br><br>
+                <div class="email" data-aos="fade-right"><span class="star">*</span>hell0@email.com</div>
+                <div class="email" data-aos="fade-right"><span class="star">*</span>202-555-0127</div>
+            </div>
+            <div class="input" data-aos="fade-left">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <textarea name="" id="" cols="30" rows="10" placeholder="message"></textarea>
+                <div class="btn-box">
+                    <a href="" class="btn">SUBMIT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+
+    <div class="line2"><span></span></div>
+    <footer>
+        <div class="footer">Copyright &copy; 2023 Freelance Digital Design | Powered by Freelance Digital Design </div>
+        <div>
+            <span class="links"><ion-icon name="logo-youtube"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-facebook"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-instagram"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-linkedin"></ion-icon></span>
+        </div>
+    </footer>
+</body>
+<script src="script.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</html>

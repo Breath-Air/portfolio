@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: sans-serif;
+    }
+
+    :root {
+        --bg-color: #000;
+        --second-bg-color: #fff;
+        --text-bg-color: #fff;
+        --second-text-bg-color: #000;
+        --main-bg-color: #fe6509;
+    }
+
+    html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-bg-color);
+    }
+
+    section {
+        min-height: 100vh;
+        padding: 10rem 9% 2rem;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #000;
+        z-index: 99;
+    }
+
+    .color {
+        background-color: var(--main-bg-color);
+    }
+
+    .logo {
+        font-size: 2.9rem;
+        color: var(--text-bg-color);
+        font-weight: 600;
+    }
+
+    .navbar a {
+        font-size: 1.3rem;
+        color: var(--text-bg-color);
+        font-weight: 500;
+        margin-left: 3.5rem;
+        transition: .3s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: var(--main-bg-color);
+    }
+
+    #menu-icon {
+        font-size: 3.6rem;
+        color: var(--text-bg-color);
+        cursor: pointer;
+        display: none;
+    }
+
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: var(--bg-color);
+        padding: 6rem;
+    }
+
+    .heading {
+        font-size: 5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .btn-box {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 34.5rem;
+        height: 5rem;
+    }
+
+    .btn-box .btn {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15rem;
+        height: 100%;
+        background-color: var(--main-bg-color);
+        border: .2rem solid var(--main-bg-color);
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        color: var(--bg-color);
+        z-index: 1;
+        overflow: hidden;
+        transition: .5s;
+    }
+
+    .btn-box .btn:hover {
+        color: var(--main-bg-color);
+    }
+
+
+    .btn-box .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--bg-color);
+        z-index: -1;
+        transition: .5s;
+    }
+
+    .btn-box .btn:hover:before {
+        width: 100%;
+    }
+
+    .about-img {
+        position: relative;
+        width: 25rem;
+        height: 25rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h3 {
+        font-size: 4rem;
+        margin: 0 20vh;
+        position: relative;
+        left: -18rem;
+    }
+
+    .contact-box h3 {
+        font-size: 4rem;
+        margin: 0 20vh;
+        position: relative;
+        left: -6rem;
+    }
+
+
+    .about-img img {
+        width: 90%;
+        border-radius: 50%;
+    }
+
+    .about-img .circle-spin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border-top: .2rem solid var(--second-bg-color);
+        border-bottom: .2rem solid var(--second-bg-color);
+        border-left: .2rem solid var(--main-bg-color);
+        border-right: .2rem solid var(--main-bg-color);
+    }
+
+
+    .about-contant {
+        text-align: center;
+    }
+
+    .about-contant h2 {
+        font-size: 7rem;
+        padding: 0 3rem;
+    }
+
+    .about-contant p {
+        font-size: 1.3rem;
+        margin: 2rem 0 3rem;
+        padding: 0 13rem;
+    }
+
+    .btn-box.btns {
+        display: inline-block;
+        width: 15rem;
+    }
+
+    .btn-box .btns a::before {
+        background-color: var(--second-bg-color);
+    }
+
+    .awards {
+        background-color: var(--second-bg-color);
+    }
+
+    .award-para {
+        color: var(--second-text-bg-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    .collection {
+        color: var(--second-text-bg-color);
+        margin-top: 5rem;
+    }
+
+    .div1 {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem auto;
+    }
+
+    h4 {
+        font-size: 3rem;
+    }
+
+    .lines {
+        width: 82vw;
+        height: 0px;
+        border: 1px solid var(--bg-color);
+        display: block;
+    }
+
+    .award-head {
+        color: var(--text-bg-color);
+        font-size: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gameContiner {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .continer {
+        display: grid;
+        grid-template-rows: repeat(3, 10vw);
+        grid-template-columns: repeat(4, 20vw);
+        position: relative;
+    }
+
+    .box {
+        border: 2px solid #fff;
+        font-size: 8vw;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box:hover {
+        background-color: #0e0c0c;
+        cursor: pointer;
+    }
+
+    .info {
+        font-size: 25px;
+    }
+
+    .gameInfo {
+        padding: 0 34px;
+    }
+
+    .br-0 {
+        border-right: 0;
+    }
+
+    .bl-0 {
+        border-left: 0;
+    }
+
+    .bt-0 {
+        border-top: 0;
+    }
+
+    .bb-0 {
+        border-bottom: 0;
+    }
+
+    .line {
+        border: 2px solid black;
+        width: 0vw;
+        height: 0px;
+        position: absolute;
+        background-color: yellowgreen;
+        transition: 1s ease-in-out;
+    }
+
+    .img-grid {
+        display: flex;
+        justify-content: space-between;
+        margin: 4rem 0;
+    }
+
+    .image {
+        width: 20vw;
+        height: 40vh;
+        margin: 0 5rem;
+    }
+
+    h2 {
+        font-size: 2.3rem;
+        margin: 2rem 5rem;
+    }
+
+    .image-para {
+        font-size: 1.2rem;
+        padding: 0 4.3rem;
+        position: relative;
+    }
+
+    .contact {
+        display: flex;
+    }
+
+    .contact-box {
+        background-color: var(--second-bg-color);
+        color: var(--second-text-bg-color);
+    }
+
+    input {
+        border: 2px solid black;
+        width: 45rem;
+        height: 4rem;
+        padding: 2rem;
+    }
+
+    .input {
+        display: grid;
+        gap: 3rem;
+    }
+
+    textarea {
+        border: 2px solid black;
+        padding: 2rem;
+        height: 15vh;
+    }
+
+    .star {
+        color: #fe6509;
+        font-size: 4rem;
+    }
+
+    .email {
+        font-size: 2rem;
+        margin: 0 7rem;
+    }
+
+    .line2 {
+        width: 100vw;
+        height: 0px;
+        border: 1px solid var(--bg-color);
+        display: block;
+    }
+
+    footer {
+        background-color: var(--second-bg-color);
+        color: black;
+        font-size: 1.3rem;
+        height: 10vh;
+        padding: 4rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .links {
+        margin: 0 1.6rem;
+        font-size: 2rem;
+    }
+
+    @media screen and (max-width :500px) {
+        html {
+            font-size: 50%;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            width: 100%;
+            padding: 1rem 4%;
+            background-color: var(--bg-color);
+            transition: .25s ease;
+            transition-delay: .25s;
+        }
+
+        .navbar.active {
+            left: 0;
+            transition-delay: 0s;
+        }
+
+        .navbar a {
+            display: grid;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 4rem 0;
+        }
+
+        #menu-icon {
+            display: block;
+        }
+
+        .contact-box {
+            margin: 0 0;
+            display: grid;
+        }
+
+        .contact-box h3 {
+            margin: -5rem -10rem;
+            left: 8rem;
+        }
+
+        .email {
+            position: relative;
+            left: 1rem;
+        }
+
+        .input {
+            margin: 10rem 0;
+            position: relative;
+            left: -28rem;
+            top: 7rem;
+        }
+
+        input {
+            width: 40rem;
+        }
+
+        .footer {
+            margin: -2rem -12rem;
+            position: relative;
+            left: 8rem;
+            top: 2rem;
+        }
+
+        .links {
+            margin: 0 0.7rem;
+            position: relative;
+            right: 12rem;
+            bottom: 3rem;
+        }
+
+        .about-contant h2 {
+            font-size: 5rem;
+            padding: 0;
+            margin: 0 -5rem;
+        }
+
+        .about-contant p {
+            font-size: 1.5rem;
+            margin: 2rem -17rem;
+        }
+
+        .award-para {
+            margin: -2rem 0rem;
+            position: relative;
+            left: 1rem;
+        }
+
+        .continer {
+            grid-template-rows: repeat(3, 17vw);
+            grid-template-columns: repeat(4, 23vw);
+        }
+
+        .image {
+            width: 13rem;
+            height: 17rem;
+            margin: 0 0rem;
+        }
+
+        h2 {
+            margin: 2rem 0rem;
+        }
+
+        .image-para {
+            padding: 0px 1rem;
+            margin: -2rem -1rem;
+            font-size: 1.4rem;
+            position: relative;
+            left: 0rem;
+        }
+
+        section {
+            min-height: 0;
+        }
+
+        .footer {
+            margin: -2rem -12rem;
+            position: relative;
+            left: 8rem;
+            top: 2rem;
+        }
+
+        .links {
+            margin: 0 0.7rem;
+            position: relative;
+            right: 12rem;
+            bottom: 3rem;
+        }
+
+    }
+</style>
+
+<body>
+    <!-- navigation bar -->
+    <header class="header">
+        <a href="#" class="logo">Name</a>
+
+        <div class="bx bx-menu" id="menu-icon"><ion-icon name="menu-outline"></ion-icon></div>
+
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT ME</a>
+            <a href="portfolio.html">PORTFOLIO</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+    <!-- about -->
+    <section class="about" id="about">
+
+        <div class="about-img">
+            <img src="img/Annotation 2023-06-02 123635.png" alt="">
+        </div>
+
+        <div class="about-contant">
+            <h2>I'm isaac Healer, a graphic desginer with extensive experience</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, veniam placeat! Facilis ducimus,
+                nostrum neque tempore quam ad. Facilis libero porro nesciunt fugit! Illum voluptatem debitis id veniam
+                nobis quo praesentium architecto assumenda vitae corrupti. Minima ex, blanditiis laudantium commodi hic
+                voluptas ea modi cum culpa magnam? Voluptatum, deleniti quaerat!</p>
+
+            <div class="btn-box btns">
+                <a href="#contact" class="btn">CONTACT ME</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- awards -->
+
+    <section class="awards" id="awards" style="min-height: 0;">
+        <div>
+            <h3 class="award-para">Awards & Recognition</h3>
+        </div>
+        <div class="collection">
+            <div class="div1"><span class="tag">INFINITY AWARDS</span>
+                <h4>Best illusration 2020</h4> <span class="tag">2020</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">WEBY AWARDS</span>
+                <h4>Best App interface</h4> <span class="tag">2019</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">GRAFIKKA AWARDS</span>
+                <h4>Best Most unique</h4> <span class="tag">2017</span>
+            </div>
+            <div><span class="lines"></span></div>
+
+            <div class="div1"><span class="tag">ARTMONDO</span>
+                <h4>Best Artist of the year</h4> <span class="tag">2016</span>
+            </div>
+            <div><span class="lines"></span></div>
+        </div>
+    </section>
+
+    <!--work with -->
+    <section class="brans" id="brands" style="min-height: 0;">
+        <h1 class="award-head">Brands I Worked with</h1>
+
+        <div class="gameContiner">
+            <div class="continer">
+                <div class="box bt-0 bl-0"><span class="boxtext"></span></div>
+                <div class="box bt-0"><span class="boxtext"></span></div>
+                <div class="box bt-0 "><span class="boxtext"></span></div>
+                <div class="box bt-0 br-0"><span class="boxtext"></span></div>
+                <div class="box bl-0"><span class="boxtext"></span></div>
+                <div class="box"><span class="boxtext"></span></div>
+                <div class="box"><span class="boxtext"></span></div>
+                <div class="box br-0"><span class="boxtext"></span></div>
+                <div class="box bb-0 bb-0 bl-0"><span class="boxtext"></span></div>
+                <div class="box bb-0"><span class="boxtext"></span></div>
+                <div class="box bb-0"><span class="boxtext"></span></div>
+                <div class="box bb-0 br-0"><span class="boxtext"></span></div>
+                <div class="box" style="border: 0;"><span class="boxtext"></span></div>
+            </div>
+
+    </section>
+
+    <!-- My server -->
+
+    <section class="server" id="server">
+        <h1 class="award-head">My Server</h1><br>
+
+        <div class="img-grid">
+            <div><img class="image" src="img/img.1.jpg" alt=""><br>
+                <h2>illusration</h2><br>
+                <p class="image-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quis labore
+                    excepturi iure. Tempore explicabo incidunt dolorum neque ex possimus at nihil eius enim. Ipsum
+                    dignissimos possimus culpa quibusdam perspiciatis?</p>
+            </div>
+            <div><img class="image" src="img/img.2.jpg" alt=""><br>
+                <h2>web Design</h2><br>
+                <p class="image-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quis labore
+                    excepturi iure. Tempore explicabo incidunt dolorum neque ex possimus at nihil eius enim. Ipsum
+                    dignissimos possimus culpa quibusdam perspiciatis?</p>
+            </div>
+            <div><img class="image" src="img/img.3.jpg" alt=""><br>
+                <h2>branding</h2><br>
+                <p class="image-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quis labore
+                    excepturi iure. Tempore explicabo incidunt dolorum neque ex possimus at nihil eius enim. Ipsum
+                    dignissimos possimus culpa quibusdam perspiciatis?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact -->
+
+    <section class="contact-box" id="contact" style="min-height: 80vh;">
+        <div class="contact">
+            <div class="contact-para">
+                <h3>
+                    interested in working together?
+                    let's talk
+                </h3><br>
+                <br><br><br>
+                <div class="email"><span class="star">*</span>hell0@email.com</div>
+                <div class="email"><span class="star">*</span>202-555-0127</div>
+            </div>
+            <div class="input">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <textarea name="" id="" cols="30" rows="10" placeholder="message"></textarea>
+                <div class="btn-box">
+                    <a href="" class="btn">SUBMIT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+
+    <div class="line2"><span></span></div>
+    <footer>
+        <div class="footer">Copyright &copy; 2023 Freelance Digital Design | Powered by Freelance Digital Design </div>
+        <div>
+            <span class="links"><ion-icon name="logo-youtube"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-facebook"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-instagram"></ion-icon></span>
+            <span class="links"><ion-icon name="logo-linkedin"></ion-icon></span>
+        </div>
+    </footer>
+
+</body>
+<script src="script.js"></script>
+
+</html>
